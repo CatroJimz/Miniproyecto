@@ -54,6 +54,17 @@ rats_clean %>%
   geom_col(position = "dodge",width = 0.8)+facet_wrap(vars(sighting_year))+
   scale_fill_brewer(palette = "Set2")+theme_minimal()+coord_flip()
 
+# An alternative to count() is to specify the groups with group_by() and then
+# be explicit about how you're summarizing the groups, such as calculating the
+# mean, standard deviation, or number of observations (we do that here with
+# `n()`).
+rats_clean %>%
+  group_by(sighting_weekday, borough) %>%mutate(borough=as.factor(borough)) %>% 
+  summarize(n = n()) %>% 
+  ggplot(mapping = aes(x=sighting_weekday,y=n,fill=borough))+
+  geom_col(position = "dodge")+scale_fill_brewer(palette = "Set2")+theme_minimal()+
+  xlab(label = NULL)+ylab(label = NULL)
+
 ```
 
 
