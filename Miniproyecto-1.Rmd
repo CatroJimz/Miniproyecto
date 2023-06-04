@@ -70,6 +70,24 @@ rats_clean %>%
   ggplot(mapping = aes(x=sighting_year,y=n,fill=borough))+
   geom_col(position = "dodge")
 
+rats_clean %>%
+  count(sighting_weekday, borough, sighting_year) %>% 
+  mutate(sighting_year=as.factor(sighting_year)) %>% 
+  ggplot(mapping = aes(x=sighting_year,y=n,fill=sighting_year))+
+  geom_half_point(aes(),alpha=0.5, side = "l",) +
+  geom_half_violin(aes(), side = "r") +coord_flip()+guides(fill=FALSE)+
+  scale_fill_brewer(palette = "Set2")
+
+type_vi <- rats_clean %>% 
+  count(location_type,Status,sighting_year) %>% 
+  mutate(Status=as.factor(Status),location_type=as.factor(location_type)) %>% 
+  filter(!is.na(location_type)) %>% 
+  filter(sighting_year>2013,sighting_year<2018)
+
+type_vi %>% 
+  ggplot(mapping = aes(x = reorder(location_type,n),y=n) )+
+  geom_col(fill="blue")+coord_flip()+facet_wrap(vars(sighting_year))+theme_minimal()
+
 ```
 
 
