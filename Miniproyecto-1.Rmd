@@ -78,6 +78,16 @@ rats_clean %>%
   geom_half_violin(aes(), side = "r") +coord_flip()+guides(fill=FALSE)+
   scale_fill_brewer(palette = "Set2")
 
+type_vi <- rats_clean %>% 
+  count(location_type,Status,sighting_year) %>% 
+  mutate(Status=as.factor(Status),location_type=as.factor(location_type)) %>% 
+  filter(!is.na(location_type)) %>% 
+  filter(sighting_year>2013,sighting_year<2017)
+
+type_vi %>% 
+  ggplot(mapping = aes(x = reorder(location_type,n),y=n) )+
+  geom_col(fill="red")+coord_flip()+facet_wrap(vars(sighting_year))+theme_minimal()
+
 ```
 
 
