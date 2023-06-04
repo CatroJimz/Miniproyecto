@@ -70,6 +70,14 @@ rats_clean %>%
   ggplot(mapping = aes(x=sighting_year,y=n,fill=borough))+
   geom_col(position = "dodge")
 
+rats_clean %>%
+  count(sighting_weekday, borough, sighting_year) %>% 
+  mutate(sighting_year=as.factor(sighting_year)) %>% 
+  ggplot(mapping = aes(x=sighting_year,y=n,fill=sighting_year))+
+  geom_half_point(aes(),alpha=0.5, side = "l",) +
+  geom_half_violin(aes(), side = "r") +coord_flip()+guides(fill=FALSE)+
+  scale_fill_brewer(palette = "Set2")
+
 ```
 
 
