@@ -57,7 +57,11 @@ rats_clean %>%
 ```
 
 
-
+¿Qué tenía de malo el gráfico original (si estás arreglando una de las figuras originales)?
+  
+En la primera imagen no se entiende bien el grafico de barra, es un grafico desordenado que genera ansiedad sin embargo para solucionar el problema  se ordeno de mayor a menor para tener un grafico mas limpio y agradable,
+en la segunda grafica tenemos un diagrama de pastel, no se logra percibir la diferencia de dos condados, entonces se soluciono con la implementacion de diagrama de barra.
+tercer grafico hay diagrama de barras apilados lo cual genera confucion y muy dificil realizar comparacion, se soluciono cambiando la posicion de las barras.
 
 
 
