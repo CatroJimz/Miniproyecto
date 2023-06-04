@@ -54,6 +54,22 @@ rats_clean %>%
   geom_col(position = "dodge",width = 0.8)+facet_wrap(vars(sighting_year))+
   scale_fill_brewer(palette = "Set2")+theme_minimal()+coord_flip()
 
+# An alternative to count() is to specify the groups with group_by() and then
+# be explicit about how you're summarizing the groups, such as calculating the
+# mean, standard deviation, or number of observations (we do that here with
+# `n()`).
+rats_clean %>%
+  group_by(sighting_weekday, borough) %>%mutate(borough=as.factor(borough)) %>% 
+  summarize(n = n()) %>% 
+  ggplot(mapping = aes(x=sighting_weekday,y=n,fill=borough))+
+  geom_col(position = "dodge")+scale_fill_brewer(palette = "Set2")+theme_minimal()+
+  xlab(label = NULL)+ylab(label = NULL)
+
+rats_clean %>%
+  count(sighting_weekday, borough, sighting_year) %>% 
+  ggplot(mapping = aes(x=sighting_year,y=n,fill=borough))+
+  geom_col(position = "dodge")
+
 ```
 
 
@@ -62,6 +78,11 @@ rats_clean %>%
 En la primera imagen no se entiende bien el grafico de barra, es un grafico desordenado que genera ansiedad sin embargo para solucionar el problema  se ordeno de mayor a menor para tener un grafico mas limpio y agradable,
 en la segunda grafica tenemos un diagrama de pastel, no se logra percibir la diferencia de dos condados, entonces se soluciono con la implementacion de diagrama de barra.
 tercer grafico hay diagrama de barras apilados lo cual genera confucion y muy dificil realizar comparacion, se soluciono cambiando la posicion de las barras.
+
+¿Qué historia estás contando con tu nuevo gráfico?
+  
+  en los dos primeros graficos podemos observar que los avistamiento de ratones son mas concurridos en Brooklyn y menos concurrido en State Island tambien podemos ver que los dia de la semana son los dias preferidos por los ratones y en efecto los fines de semana son menos visto los ratones una hipotesis seria por la mayor presencia humana en las calle en los fines de semanas.
+tambien vemos un aumento de ratones apartir del año 2013 siendo el año 2016 el año con mayor presencia de ratones y en  Brooklyn con el record de presencia de ratones en el 2016
 
 
 
