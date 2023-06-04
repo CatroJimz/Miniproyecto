@@ -18,8 +18,18 @@ Rat_Sightings <- read_csv("Rat_Sightings.csv",na = c("", "NA", "N/A"))
 ```
 
 ```{r manipulacion de datos}
+Rat_Sightings<- Rat_Sightings %>% select(-("School or Citywide Complaint":"Ferry Terminal Name") )
 
-
+rats_clean <- Rat_Sightings %>%
+  rename(created_date = `Created Date`,
+         location_type = `Location Type`,
+         borough = Borough) %>%
+  mutate(created_date = mdy_hms(created_date)) %>%
+  mutate(sighting_year = year(created_date),
+         sighting_month = month(created_date),
+         sighting_day = day(created_date),
+         sighting_weekday = wday(created_date, label = TRUE, abbr = FALSE)) %>%
+  filter(borough != "Unspecified")
 
 
 ```

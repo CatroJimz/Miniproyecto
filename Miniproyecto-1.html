@@ -387,6 +387,18 @@ library(gghalves)</code></pre>
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>Rat_Sightings&lt;- Rat_Sightings %&gt;% select(-(&quot;School or Citywide Complaint&quot;:&quot;Ferry Terminal Name&quot;) )
+
+rats_clean &lt;- Rat_Sightings %&gt;%
+  rename(created_date = `Created Date`,
+         location_type = `Location Type`,
+         borough = Borough) %&gt;%
+  mutate(created_date = mdy_hms(created_date)) %&gt;%
+  mutate(sighting_year = year(created_date),
+         sighting_month = month(created_date),
+         sighting_day = day(created_date),
+         sighting_weekday = wday(created_date, label = TRUE, abbr = FALSE)) %&gt;%
+  filter(borough != &quot;Unspecified&quot;)</code></pre>
 
 
 
