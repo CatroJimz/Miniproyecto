@@ -46,6 +46,14 @@ ggplot(rats_by_weekday, aes(x = fct_rev(sighting_weekday), y = n)) +
   coord_flip() +
   facet_wrap(~ sighting_year,nrow = 2)
 
+# See the count of rat sightings by weekday and borough
+rats_clean %>%
+  count(sighting_weekday, borough, sighting_year) %>%
+  filter(sighting_year>2013,sighting_year<2018) %>% 
+  ggplot(mapping = aes(x=sighting_weekday,y=n,fill=borough))+
+  geom_col(position = "dodge",width = 0.8)+facet_wrap(vars(sighting_year))+
+  scale_fill_brewer(palette = "Set2")+theme_minimal()+coord_flip()
+
 ```
 
 
