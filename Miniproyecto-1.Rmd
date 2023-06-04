@@ -31,6 +31,8 @@ rats_clean <- Rat_Sightings %>%
          sighting_weekday = wday(created_date, label = TRUE, abbr = FALSE)) %>%
   filter(borough != "Unspecified")
 
+rats_clean %>%ggplot(mapping = aes(x=fct_rev(sighting_weekday),fill=borough ))+
+  geom_bar()+facet_wrap(vars(borough))+guides(fill=FALSE)+coord_flip()
 
 ```
 
