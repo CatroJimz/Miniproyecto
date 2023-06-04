@@ -34,6 +34,13 @@ rats_clean <- Rat_Sightings %>%
 rats_clean %>%ggplot(mapping = aes(x=fct_rev(sighting_weekday),fill=borough ))+
   geom_bar()+facet_wrap(vars(borough))+guides(fill=FALSE)+coord_flip()
 
+# Assign a summarized data frame to an object to use it in a plot
+rats_by_weekday <- rats_clean %>%
+  count(sighting_weekday, sighting_year)
+
+ggplot(data=rats_by_weekday,mapping = aes(x=sighting_weekday,y=n))+
+  geom_col()+facet_wrap(vars(sighting_year))+coord_flip()
+
 ```
 
 
