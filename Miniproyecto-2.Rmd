@@ -1,0 +1,20 @@
+---
+title: "Miniproyecto-2"
+author: "Castro Jimenez"
+date: "6/23/2021"
+output: html_document
+---
+
+
+
+```{r}
+library(tidyverse)  # For ggplot, dplyr, and friends
+library(WDI)        # Get data from the World Bank
+library(scales)     # For nicer label formatting
+library(plotly)     # For easy interactive plots
+library(htmlwidgets)
+```
+
+
+
+
