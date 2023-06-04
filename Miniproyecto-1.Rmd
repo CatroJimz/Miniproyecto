@@ -41,6 +41,11 @@ rats_by_weekday <- rats_clean %>%
 ggplot(data=rats_by_weekday,mapping = aes(x=sighting_weekday,y=n))+
   geom_col()+facet_wrap(vars(sighting_year))+coord_flip()
 
+ggplot(rats_by_weekday, aes(x = fct_rev(sighting_weekday), y = n)) + 
+  geom_col() +
+  coord_flip() +
+  facet_wrap(~ sighting_year,nrow = 2)
+
 ```
 
 
