@@ -65,6 +65,11 @@ rats_clean %>%
   geom_col(position = "dodge")+scale_fill_brewer(palette = "Set2")+theme_minimal()+
   xlab(label = NULL)+ylab(label = NULL)
 
+rats_clean %>%
+  count(sighting_weekday, borough, sighting_year) %>% 
+  ggplot(mapping = aes(x=sighting_year,y=n,fill=borough))+
+  geom_col(position = "dodge")
+
 ```
 
 
