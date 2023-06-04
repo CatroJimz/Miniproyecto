@@ -1,7 +1,7 @@
 ---
-title: "Miniproyecto-1"
+title: "Analisis exploratorio"
 author: "Castro Jimenez"
-date: "6/19/2021"
+date: "06/01/2023"
 output: html_document
 ---
 
