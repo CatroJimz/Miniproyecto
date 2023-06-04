@@ -1,0 +1,35 @@
+---
+title: "Miniproyecto-1"
+author: "Castro Jimenez"
+date: "6/19/2021"
+output: html_document
+---
+
+
+```{r cargar datos}
+library(tidyverse)
+library(readr)
+library(skimr)
+library(lubridate)
+library(gghalves)
+Rat_Sightings <- read_csv("Rat_Sightings.csv",na = c("", "NA", "N/A"))
+
+
+```
+
+```{r manipulacion de datos}
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
